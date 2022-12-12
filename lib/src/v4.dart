@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:token_parser/token_parser.dart';
+import 'package:token_parser/src/lexemes/global.dart';
 import 'package:token_parser/debug.dart';
 
 import 'package:antlr_parser/src/v4/basic.dart' as basic;
@@ -8,15 +9,15 @@ import 'package:antlr_parser/src/v4/lexer.dart' as lexer;
 import 'package:antlr_parser/src/v4/parser.dart' as parser;
 
 void main() {
-  final input = File('./example/antlr/v4/Hello.g4').readAsStringSync();
+  final input = File('./example/antlr/v4/Dart.g').readAsStringSync();
   print(antlr4.parse(input).get(lexeme: parser.lexerAtom));
 }
 
 // ignore: non_constant_identifier_names
 final antlr4 = DebugGrammar(
   showPath: true,
-  main: ~parser.grammarSpec, // parser.grammarSpec | basic.Comment,
-  remove: lexer.COMMENT,
+  main: ~parser.grammarSpec,
+  // remove: lexer.COMMENT,
   rules: {
     /* -= Parser Rules =- */
     'grammarSpec': parser.grammarSpec,
