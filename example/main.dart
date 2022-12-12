@@ -1,7 +1,10 @@
-import 'package:package_name/package_name.dart';
+import 'dart:io';
 
-// A pratical example of how to use the package...    
+import 'package:antlr_parser/antlr_parser.dart';
 
 void main() {
-    // Example code...
+  final example = File('./example/antlr/v4/Hello.g4').readAsStringSync();
+
+  final result = antlr4.parse(example);
+  print(result);
 }
